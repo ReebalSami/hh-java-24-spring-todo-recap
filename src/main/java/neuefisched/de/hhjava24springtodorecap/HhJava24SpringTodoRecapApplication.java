@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class HhJava24SpringTodoRecapApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HhJava24SpringTodoRecapApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HhJava24SpringTodoRecapApplication.class, args);
+    }
 
 }
