@@ -2,6 +2,7 @@ package neuefisched.de.hhjava24springtodorecap.service;
 
 import neuefisched.de.hhjava24springtodorecap.model.Task;
 import neuefisched.de.hhjava24springtodorecap.model.TaskStatus;
+import neuefisched.de.hhjava24springtodorecap.model.dtos.TaskDto;
 import neuefisched.de.hhjava24springtodorecap.repo.TaskRepository;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ class SuperKanbanServiceTest {
     @Test
     void addNewTask_shouldReturnCleaningTaskWithIdandStatusOpen_whenCalledWithCleaning() {
         //GIVEN
-        Task taskToSave = new Task();
+        TaskDto taskToSave = new TaskDto("cleaning", "OPEN");
         Task taskExpected = new Task("1", "Cleaning", TaskStatus.OPEN);
         when(idMock.randomId()).thenReturn("1");
         when(repo.save(taskExpected)).thenReturn(taskExpected);

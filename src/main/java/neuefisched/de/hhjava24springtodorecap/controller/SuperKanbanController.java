@@ -49,8 +49,8 @@ export const deleteTodo = id => axios.delete(`/api/todo/${id}`)
     }
 
     @PostMapping("/todo")
-    public Task addNewTask(@RequestBody Task task) {
-        return service.addNewTask(task);
+    public Task addNewTask(@RequestBody TaskDto taskDto) {
+        return service.addNewTask(taskDto);
     }
 
 //putTodo = todo => axios.put(`/api/todo/${todo.id}`, todo)

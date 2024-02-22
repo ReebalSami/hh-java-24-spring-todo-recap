@@ -37,9 +37,8 @@ public class SuperKanbanService {
     }
 
     //add a new task to the todo_list
-    public Task addNewTask(Task task) {
-        Task temp = task.withId(idService.randomId())
-                    .withStatus(TaskStatus.valueOf("OPEN"));
+    public Task addNewTask(TaskDto taskDto) {
+        Task temp = new Task(idService.randomId(), taskDto.getDescription(), TaskStatus.valueOf("OPEN"));
         repository.save(temp);
         return repository.findById(temp.getId()).orElseThrow();
     }
