@@ -1,6 +1,7 @@
 package neuefisched.de.hhjava24springtodorecap.service;
 
 import lombok.RequiredArgsConstructor;
+import neuefisched.de.hhjava24springtodorecap.exeption.NoSuchElementException;
 import neuefisched.de.hhjava24springtodorecap.model.Task;
 import neuefisched.de.hhjava24springtodorecap.model.TaskStatus;
 import neuefisched.de.hhjava24springtodorecap.model.dtos.TaskDto;
@@ -44,17 +45,17 @@ public class SuperKanbanService {
     }
 
     public Task getTodoById(String id) {
-        return repository.findById(id).orElseThrow();
+return repository.findById(id).orElseThrow(() -> new NoSuchElementException("Id: " + id + " is not found"));
     }
 
     public Task updateTask(String id, Task task) {
         Task temp = task.withId(id);
         repository.save(temp);
-        return repository.findById(temp.getId()).orElseThrow();
+        return repository.findById(temp.getId()).orElseThrow(() -> new NoSuchElementException("Id: " + id + " is not found"));
     }
 
     public Task deleteTask(String id) {
-        Task temp = repository.findById(id).orElseThrow();
+        Task temp = repository.findById(id).orElseThrow(() -> new NoSuchElementException("Id: " + id + " is not found"));
         repository.deleteById(id);
         return temp;}
 }
