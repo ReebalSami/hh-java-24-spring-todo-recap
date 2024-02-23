@@ -31,19 +31,21 @@ class SuperKanbanServiceTest {
     @Test
     void addNewTask_shouldReturnCleaningTaskWithIdandStatusOpen_whenCalledWithCleaning() {
         //GIVEN
-        TaskDto taskToSave = new TaskDto("cleaning", "OPEN");
+        TaskDto taskToSave = new TaskDto("Cleaning", TaskStatus.OPEN);
         Task taskExpected = new Task("1", "Cleaning", TaskStatus.OPEN);
+
         when(idMock.randomId()).thenReturn("1");
         when(repo.save(taskExpected)).thenReturn(taskExpected);
-        when(repo.findById("1")).thenReturn(java.util.Optional.of(taskExpected));
+
 
         //WHEN
         Task actual = superKanbanService.addNewTask(taskToSave);
         //THEN
         assertEquals(taskExpected, actual);
         verify(idMock).randomId();
-        verify(repo).findById("1");
+        verify(repo).save(taskExpected);
     }
+
 
     @Test
     void getTodoById() {
@@ -65,7 +67,7 @@ class SuperKanbanServiceTest {
         when(repo.save(expected)).thenReturn(expected);
         when(repo.findById("1")).thenReturn(java.util.Optional.of(expected));
         //WHEN
-        Task actual = superKanbanService.updateTask("1", task);
+        Task actual = superKanbanService.updateTask("1", expected);
         //THEN
         assertEquals(expected, actual);
         verify(repo).findById("1");

@@ -43,10 +43,10 @@ export const deleteTodo = id => axios.delete(`/api/todo/${id}`)
     }
 
 
-    @GetMapping("/todos")
+/*    @GetMapping("/todos")
     public List<TaskDto> getTodos() {
         return service.getTodos();
-    }
+    }*/
 
     @PostMapping("/todo")
     public Task addNewTask(@RequestBody TaskDto taskDto) {

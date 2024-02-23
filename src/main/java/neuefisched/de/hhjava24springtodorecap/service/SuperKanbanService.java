@@ -19,12 +19,12 @@ public class SuperKanbanService {
     private final TaskRepository repository;
     private final IdService idService;
 
-
     public List<Task> getAllTodos(){
         return repository.findAll();
     }
 
-    //get all tasks from the todo_list
+
+/*    //get all tasks from the todo_list
     public List<TaskDto> getTodos() {
         List<Task> temp = repository.findAll();
         List<TaskDto> dtoList = new ArrayList<>();
@@ -34,13 +34,13 @@ public class SuperKanbanService {
         }
         return dtoList;
 
-    }
+    }*/
 
     //add a new task to the todo_list
     public Task addNewTask(TaskDto taskDto) {
-        Task temp = new Task(idService.randomId(), taskDto.getDescription(), TaskStatus.valueOf("OPEN"));
-        repository.save(temp);
-        return repository.findById(temp.getId()).orElseThrow();
+        String id = idService.randomId();
+        Task temp = new Task(id, taskDto.getDescription(), taskDto.getStatus());
+        return repository.save(temp);
     }
 
     public Task getTodoById(String id) {

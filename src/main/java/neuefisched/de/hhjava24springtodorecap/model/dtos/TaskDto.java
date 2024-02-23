@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.With;
+import neuefisched.de.hhjava24springtodorecap.model.TaskStatus;
 
 
 @Data
@@ -13,5 +14,5 @@ import lombok.With;
 
 public class TaskDto {
     private String description;
-    private String status;
+    private TaskStatus status;
 }
